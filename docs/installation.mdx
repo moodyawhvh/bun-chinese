@@ -1,18 +1,20 @@
 ---
-title: Installation
-description: Install Bun with npm, Homebrew, Docker, or the official script.
+title: 安装
+description: 通过 npm、Homebrew、Docker 或官方脚本安装 Bun。
 ---
 
-## Overview
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
-Bun ships as a single, dependency-free executable. Install it with the install script, a package manager, or Docker on macOS, Linux, and Windows.
+## 概览
 
-<Tip>After installation, verify with `bun --version` and `bun --revision`.</Tip>
+Bun 以单个无依赖的可执行文件发布。在 macOS、Linux 和 Windows 上,可以通过安装脚本、包管理器或 Docker 安装。
 
-## Installation
+<Tip>安装完成后,用 `bun --version` 和 `bun --revision` 验证。</Tip>
+
+## 安装
 
 <Tabs>
-  <Tab title="macOS & Linux">
+  <Tab title="macOS 和 Linux">
 
     <CodeGroup>
       ```bash curl icon="globe"
@@ -21,7 +23,7 @@ Bun ships as a single, dependency-free executable. Install it with the install s
 
     </CodeGroup>
     <Note>
-      **Linux users:** You need the `unzip` package to install Bun (`sudo apt install unzip`). We recommend kernel version 5.6 or higher. Bun runs on kernels as old as 3.10 (RHEL 7) with graceful degradation of newer syscalls. Use `uname -r` to check your kernel version.
+      **Linux 用户:** 安装 Bun 需要 `unzip` 包(`sudo apt install unzip`)。建议内核版本 5.6 或更高。Bun 可以运行在低至 3.10 的内核上(RHEL 7),较新的系统调用会优雅降级。用 `uname -r` 检查你的内核版本。
       </Note>
 
   </Tab>
@@ -34,15 +36,15 @@ Bun ships as a single, dependency-free executable. Install it with the install s
 
     </CodeGroup>
     <Warning>
-      Bun requires Windows 10 version 1809 or later.
+      Bun 要求 Windows 10 版本 1809 或更高。
     </Warning>
 
 
-    For support and discussion, join the **#windows** channel on the [Discord](https://bun.com/discord).
+    如需支持与讨论,请加入 [Discord](https://bun.com/discord) 的 **#windows** 频道。
 
   </Tab>
 
-    <Tab title="Package Managers">
+    <Tab title="包管理器">
     	<CodeGroup>
 
     	```bash npm icon="npm"
@@ -62,16 +64,16 @@ Bun ships as a single, dependency-free executable. Install it with the install s
     </Tab>
 
   <Tab title="Docker">
-    Bun provides a Docker image that supports both Linux x64 and arm64.
+    Bun 提供同时支持 Linux x64 和 arm64 的 Docker 镜像。
 
     ```bash Docker icon="docker"
     docker pull oven/bun
     docker run --rm --init --ulimit memlock=-1:-1 oven/bun
     ```
 
-    ### Image Variants
+    ### 镜像变体
 
-    Bun also publishes image variants for different operating systems:
+    Bun 还为不同操作系统发布了镜像变体:
 
     ```bash Docker icon="docker"
     docker pull oven/bun:debian
@@ -83,7 +85,7 @@ Bun ships as a single, dependency-free executable. Install it with the install s
   </Tab>
 </Tabs>
 
-To check that Bun was installed successfully, open a new terminal window and run:
+要确认 Bun 安装成功,打开一个新的终端窗口并运行:
 
 ```bash terminal icon="terminal"
 bun --version
@@ -95,35 +97,34 @@ bun --revision
 ```
 
 <Warning>
-  If you've installed Bun but are seeing a `command not found` error, you may have to manually add the installation
-  directory (`~/.bun/bin`) to your `PATH`.
+  如果你已经安装了 Bun,但仍看到 `command not found` 错误,可能需要手动把安装目录(`~/.bun/bin`)加入 `PATH`。
 </Warning>
 
-<Accordion title="Add Bun to your PATH">
+<Accordion title="把 Bun 加入 PATH">
   <Tabs>
-    <Tab title="macOS & Linux">
+    <Tab title="macOS 和 Linux">
       <Steps>
-        <Step title="Determine which shell you're using">
+        <Step title="确认你使用的 shell">
         ```bash terminal icon="terminal"
         echo $SHELL
         # /bin/zsh  or /bin/bash or /bin/fish
         ```
         </Step>
-        <Step title="Open your shell configuration file">
-          - For bash: `~/.bashrc`
-          - For zsh: `~/.zshrc`
-          - For fish: `~/.config/fish/config.fish`
+        <Step title="打开 shell 配置文件">
+          - bash:`~/.bashrc`
+          - zsh:`~/.zshrc`
+          - fish:`~/.config/fish/config.fish`
         </Step>
         
-        <Step title="Add the Bun directory to PATH">
-          Add these lines to your configuration file:
+        <Step title="把 Bun 目录加入 PATH">
+          在配置文件中加入以下行:
           ```bash terminal icon="terminal"
           export BUN_INSTALL="$HOME/.bun"
           export PATH="$BUN_INSTALL/bin:$PATH"
           ```
         </Step>
         
-        <Step title="Reload your shell configuration">
+        <Step title="重新加载 shell 配置">
           ```bash terminal icon="terminal"
           source ~/.bashrc  # or ~/.zshrc
           ```
@@ -132,12 +133,12 @@ bun --revision
     </Tab>
     <Tab title="Windows">
       <Steps>
-        <Step title="Determine if the bun binary is properly installed">
+        <Step title="确认 bun 二进制已正确安装">
         ```bash terminal icon="terminal"
         & "$env:USERPROFILE\.bun\bin\bun" --version
         ```
 
-        If the command runs successfully but `bun --version` is not recognized, bun is not in your system's PATH. To fix this, open a PowerShell terminal and run the following command:
+        如果该命令能成功运行,但 `bun --version` 无法识别,说明 bun 不在系统 PATH 中。修复方法:打开 PowerShell 终端并运行以下命令:
 
         ```bash terminal icon="terminal"
         [System.Environment]::SetEnvironmentVariable(
@@ -148,8 +149,8 @@ bun --revision
         ```
 
         </Step>
-        <Step title="Restart your terminal">
-           Restart your terminal and test with `bun --version`.
+        <Step title="重启终端">
+           重启终端并用 `bun --version` 测试。
 
           ```bash terminal icon="terminal"
           bun --version
@@ -163,30 +164,30 @@ bun --revision
 
 ---
 
-## Upgrading
+## 升级
 
-Once installed, the binary can upgrade itself:
+安装后,二进制文件可以自我升级:
 
 ```bash terminal icon="terminal"
 bun upgrade
 ```
 
 <Tip>
-**Homebrew users** <br />
-To avoid conflicts with Homebrew, use `brew upgrade bun` instead.
+**Homebrew 用户** <br />
+为避免与 Homebrew 冲突,请改用 `brew upgrade bun`。
 
-**Scoop users** <br />
-To avoid conflicts with Scoop, use `scoop update bun` instead.
+**Scoop 用户** <br />
+为避免与 Scoop 冲突,请改用 `scoop update bun`。
 
 </Tip>
 
 ---
 
-## Canary Builds
+## Canary 构建
 
-[-> View canary build](https://github.com/oven-sh/bun/releases/tag/canary)
+[-> 查看 canary 构建](https://github.com/oven-sh/bun/releases/tag/canary)
 
-Bun automatically releases an (untested) canary build on every commit to main. To upgrade to the latest canary build:
+每次向 main 分支提交,Bun 都会自动发布一个(未测试的)canary 构建。要升级到最新 canary 构建:
 
 ```bash terminal icon="terminal"
 # Upgrade to latest canary
@@ -196,17 +197,17 @@ bun upgrade --canary
 bun upgrade --stable
 ```
 
-Use a canary build to test new features and bug fixes before they reach a stable release. To help the Bun team fix bugs faster, canary builds automatically upload crash reports.
+可以使用 canary 构建在正式版发布前测试新特性和缺陷修复。为帮助 Bun 团队更快修复缺陷,canary 构建会自动上传崩溃报告。
 
 ---
 
-## Installing Older Versions
+## 安装旧版本
 
-Since Bun is a single binary, you can install older versions by re-running the installer script with a specific version.
+由于 Bun 是单个二进制文件,重新运行指定版本的安装脚本即可安装旧版本。
 
 <Tabs>
-  <Tab title="Linux & macOS">
-    To install a specific version, pass the git tag to the install script:
+  <Tab title="Linux 和 macOS">
+    要安装特定版本,把 git tag 传给安装脚本:
 
     ```bash terminal icon="terminal"
     curl -fsSL https://bun.com/install | bash -s "bun-v1.3.3"
@@ -214,7 +215,7 @@ Since Bun is a single binary, you can install older versions by re-running the i
 
   </Tab>
   <Tab title="Windows">
-    On Windows, pass the version number to the PowerShell install script:
+    在 Windows 上,把版本号传给 PowerShell 安装脚本:
 
     ```powershell PowerShell icon="windows"
     iex "& {$(irm https://bun.com/install.ps1)} -Version 1.3.3"
@@ -225,11 +226,11 @@ Since Bun is a single binary, you can install older versions by re-running the i
 
 ---
 
-## Direct Downloads
+## 直接下载
 
-To download Bun binaries directly, visit the [releases page on GitHub](https://github.com/oven-sh/bun/releases).
+要直接下载 Bun 二进制文件,请访问 [GitHub releases 页面](https://github.com/oven-sh/bun/releases)。
 
-### Latest Version Downloads
+### 最新版本下载
 
 <CardGroup cols={2}>
   <Card
@@ -237,83 +238,79 @@ To download Bun binaries directly, visit the [releases page on GitHub](https://g
     title="Linux x64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip"
   >
-    glibc, Nehalem or newer
+    glibc,Nehalem 或更新
   </Card>
   <Card
     icon="/icons/linux.svg"
     title="Linux ARM64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64.zip"
   >
-    ARM64 Linux systems
+    ARM64 Linux 系统
   </Card>
   <Card
     icon="/icons/windows.svg"
     title="Windows x64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip"
   >
-    Nehalem or newer
+    Nehalem 或更新
   </Card>
   <Card
     icon="/icons/windows.svg"
     title="Windows ARM64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-aarch64.zip"
   >
-    Windows on ARM (Snapdragon, etc.)
+    Windows on ARM(骁龙等)
   </Card>
   <Card
     icon="/icons/apple.svg"
     title="macOS ARM64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip"
   >
-    Apple Silicon (M1/M2/M3)
+    Apple Silicon(M1/M2/M3)
   </Card>
   <Card
     icon="/icons/apple.svg"
     title="macOS x64"
     href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip"
   >
-    Intel Macs
+    Intel Mac
   </Card>
 </CardGroup>
 
-### Musl Binaries
+### Musl 二进制
 
-For distributions without `glibc` (Alpine Linux, Void Linux):
+适用于不带 `glibc` 的发行版(Alpine Linux、Void Linux):
 
 - [Linux x64 musl](https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-musl.zip)
 - [Linux ARM64 musl](https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64-musl.zip)
 
 <Note>
-  Bun's glibc binaries require glibc 2.17 or newer. If you encounter an error like `bun:
-  /lib/x86_64-linux-gnu/libc.so.6: version GLIBC_... not found`, try using the musl binary. Bun's install script
-  automatically chooses the correct binary for your system.
+  Bun 的 glibc 二进制要求 glibc 2.17 或更高。如果遇到 `bun:
+  /lib/x86_64-linux-gnu/libc.so.6: version GLIBC_... not found` 这类错误,请改用 musl 二进制。Bun 的安装脚本会自动为你的系统选择正确的二进制。
 </Note>
 
 ---
 
-## CPU Requirements
+## CPU 要求
 
-Bun ships a single x64 binary per platform. It targets the Nehalem microarchitecture (SSE4.2) and selects AVX2/AVX-512
-code paths at runtime when the CPU supports them, so there is no separate "baseline" download to choose.
+Bun 每个平台只发布一个 x64 二进制。它以 Nehalem 微架构(SSE4.2)为目标,并在运行时根据 CPU 支持情况选择 AVX2/AVX-512 代码路径,因此无需挑选单独的 "baseline" 下载。
 
-| Platform | Intel Requirement               | AMD Requirement    |
-| -------- | ------------------------------- | ------------------ |
-| x64      | Nehalem (1st gen Core) or newer | Bulldozer or newer |
+| 平台 | Intel 要求                | AMD 要求           |
+| ---- | ------------------------- | ------------------ |
+| x64  | Nehalem(第一代 Core)或更新 | Bulldozer 或更新 |
 
 <Note>
-  Bun does not support x64 CPUs without the SSE4.2 extension. Bun requires macOS 13.0 or later. The `-baseline` release
-  assets and `@oven/bun-*-x64-baseline` npm packages are kept as aliases of the single x64 binary for backward
-  compatibility with older install scripts.
+  Bun 不支持不带 SSE4.2 扩展的 x64 CPU。Bun 要求 macOS 13.0 或更高。`-baseline` release 资产和 `@oven/bun-*-x64-baseline` npm 包仅作为单一 x64 二进制的别名保留,以兼容旧的安装脚本。
 </Note>
 
 ---
 
-## Uninstall
+## 卸载
 
-To remove Bun from your system:
+从系统中移除 Bun:
 
 <Tabs>
-	<Tab title="macOS & Linux">
+	<Tab title="macOS 和 Linux">
   ```bash terminal icon="terminal"
   rm -rf ~/.bun
   ```
@@ -325,7 +322,7 @@ To remove Bun from your system:
     ```
     </Tab>
 
-    <Tab title="Package Managers">
+    <Tab title="包管理器">
     	<CodeGroup>
     		```bash npm icon="npm"
       npm uninstall -g bun

@@ -1,19 +1,21 @@
 ---
 title: TypeScript
-description: Using TypeScript with Bun, including type definitions and compiler options
+description: 在 Bun 中使用 TypeScript,包括类型定义和编译器选项
 ---
 
-To get TypeScript definitions for Bun's built-in APIs, install `@types/bun`.
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
+
+要获得 Bun 内置 API 的 TypeScript 类型定义,请安装 `@types/bun`。
 
 ```zsh terminal icon="terminal"
 bun add -d @types/bun # dev dependency
 ```
 
-You can now reference the `Bun` global in your TypeScript files without errors in your editor.
+此后即可在 TypeScript 文件中引用 `Bun` 全局对象,编辑器不会再报错。
 
-## Suggested `compilerOptions`
+## 推荐的 `compilerOptions`
 
-Bun supports top-level await, JSX, and imports with `.ts` extensions, which TypeScript doesn't allow by default. Use these `compilerOptions` in a Bun project so TypeScript doesn't warn about those features.
+Bun 支持顶层 await、JSX 以及带 `.ts` 扩展名的导入,这些是 TypeScript 默认不允许的。在 Bun 项目中使用以下 `compilerOptions`,TypeScript 就不会对这些特性报警。
 
 ```json tsconfig.json icon="file-json"
 {
@@ -48,12 +50,12 @@ Bun supports top-level await, JSX, and imports with `.ts` extensions, which Type
 }
 ```
 
-Running `bun init` in a new directory generates this `tsconfig.json` for you.
+在新目录中运行 `bun init` 会自动生成这份 `tsconfig.json`。
 
 ```sh terminal icon="terminal"
 bun init
 ```
 
-## TypeScript 6 and 7
+## TypeScript 6 和 7
 
-If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6).
+如果你使用 TypeScript 6.0 或更高版本,还需要在 `compilerOptions` 中加入 `"types": ["bun"]`。详见 [TypeScript 6 和 7](/typescript-6)。
