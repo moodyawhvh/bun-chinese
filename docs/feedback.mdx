@@ -1,24 +1,26 @@
 ---
-title: Feedback
-description: Share feedback, bug reports, and feature requests
+title: 反馈
+description: 分享反馈、缺陷报告和功能请求
 mode: center
 ---
 
-Here's how to open a helpful issue for a bug, a performance problem, or a feature request:
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
-<Callout icon="discord">For general questions, join the [Discord](https://bun.com/discord).</Callout>
+下面介绍如何针对缺陷、性能问题或功能请求提交一份有价值的 issue:
 
-## Reporting Issues
+<Callout icon="discord">一般性问题请加入 [Discord](https://bun.com/discord)。</Callout>
+
+## 报告问题
 
 <Steps>
-	<Step title="Upgrade Bun">
-		Upgrade Bun to the latest version with `bun upgrade`. This might fix your problem without opening an issue.
+	<Step title="升级 Bun">
+		用 `bun upgrade` 把 Bun 升级到最新版本。这一步也许不用开 issue 就能解决你的问题。
 
     	```bash terminal icon="terminal"
     	bun upgrade
     	```
 
-    	You can also try the latest canary release, which includes changes and bug fixes that haven't reached a stable release yet.
+    	也可以试试最新的 canary 版本,它包含尚未进入正式版的改动和缺陷修复。
 
     	```bash terminal icon="terminal"
     	bun upgrade --canary
@@ -27,35 +29,35 @@ Here's how to open a helpful issue for a bug, a performance problem, or a featur
     	bun upgrade --stable
     	```
 
-    	If the issue persists after upgrading, continue to the next step.
+    	如果升级后问题仍然存在,继续下一步。
     </Step>
-    <Step title="Review Existing Issues">
-    	Check whether the issue has already been reported before opening a new one. Checking first saves time for everyone and helps us focus on fixing things.
+    <Step title="检索已有 issue">
+    	在开新 issue 之前,先检查是否已有人报告过。先查一遍能节省所有人的时间,也让我们能专注于修复。
 
-    	- 🔍 [**Search existing issues**](https://github.com/oven-sh/bun/issues)
-    	- 💬 [**Check discussions**](https://github.com/oven-sh/bun/discussions)
+    	- 🔍 [**搜索已有 issue**](https://github.com/oven-sh/bun/issues)
+    	- 💬 [**查看讨论区**](https://github.com/oven-sh/bun/discussions)
 
-    	If you find a related issue, add a 👍 reaction or comment with extra details instead of opening a new one.
+    	如果找到了相关 issue,请添加 👍 反应或在评论中补充细节,而不是另开新帖。
     </Step>
-    <Step title="Report the Issue">
-    	If no one has reported the issue, open a new one or suggest an improvement.
+    <Step title="报告问题">
+    	如果还没有人报告,可以开一个新 issue 或提出改进建议。
 
-    	- 🐞 [**Report a Bug**](https://github.com/oven-sh/bun/issues/new?template=2-bug-report.yml)
-    	- ⚡ [**Suggest an Improvement**](https://github.com/oven-sh/bun/issues/new?template=4-feature-request.yml)
+    	- 🐞 [**报告缺陷**](https://github.com/oven-sh/bun/issues/new?template=2-bug-report.yml)
+    	- ⚡ [**建议改进**](https://github.com/oven-sh/bun/issues/new?template=4-feature-request.yml)
 
-    	Provide as much detail as possible, including:
-    	- A clear and concise title
-    	- A code example or steps to reproduce the issue
-    	- The version of Bun you are using (run `bun --version`)
-    	- A description of the issue (what you expected to happen and what actually happened)
-    	- The operating system and version you are using
+    	请尽量提供详细信息,包括:
+    	- 清晰简洁的标题
+    	- 代码示例或复现步骤
+    	- 你使用的 Bun 版本(运行 `bun --version`)
+    	- 问题描述(你期望发生什么、实际发生了什么)
+    	- 你使用的操作系统及版本
     		<Note>
-    			- For macOS and Linux: copy the output of `uname -mprs`
-    		  - For Windows: copy the output of this command in the PowerShell console:
+    			- macOS 和 Linux:复制 `uname -mprs` 的输出
+    		  - Windows:复制 PowerShell 控制台中以下命令的输出:
     				`"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"`
     		</Note>
     </Step>
 
 </Steps>
 
-The Bun team will review the issue and get back to you as soon as possible.
+Bun 团队会审阅该 issue 并尽快回复你。

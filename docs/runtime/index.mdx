@@ -1,30 +1,32 @@
 ---
-title: Bun Runtime
-description: Execute JavaScript/TypeScript files, package.json scripts, and executable packages with Bun's fast runtime.
+title: Bun 运行时
+description: 用 Bun 的高速运行时执行 JavaScript/TypeScript 文件、package.json 脚本和可执行包。
 ---
+
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
 import Run from "/snippets/cli/run.mdx";
 
-The Bun Runtime is designed to start fast and run fast.
+Bun 运行时的设计目标是启动快、运行快。
 
-Bun uses the [JavaScriptCore engine](https://developer.apple.com/documentation/javascriptcore), developed by Apple for Safari. JavaScriptCore usually starts and runs faster than V8, the engine used by Node.js and Chromium-based browsers. Bun's transpiler and runtime are written in Rust. On Linux, Bun starts [4x faster](https://twitter.com/jarredsumner/status/1499225725492076544) than Node.js.
+Bun 使用 [JavaScriptCore 引擎](https://developer.apple.com/documentation/javascriptcore),即 Apple 为 Safari 开发的引擎。JavaScriptCore 的启动和运行速度通常快于 V8(Node.js 和 Chromium 系浏览器使用的引擎)。Bun 的转译器和运行时用 Rust 编写。在 Linux 上,Bun 的启动速度比 Node.js [快 4 倍](https://twitter.com/jarredsumner/status/1499225725492076544)。
 
-| Command         | Time     |
+| 命令            | 耗时     |
 | --------------- | -------- |
 | `bun hello.js`  | `5.2ms`  |
 | `node hello.js` | `25.1ms` |
 
-The benchmark runs a Hello World script on Linux.
+该基准测试在 Linux 上运行一个 Hello World 脚本。
 
-## Run a file
+## 运行文件
 
-Use `bun run` to execute a source file.
+使用 `bun run` 执行源文件。
 
 ```bash terminal icon="terminal"
 bun run index.js
 ```
 
-Bun supports TypeScript and JSX with no configuration. Bun transpiles every file on the fly with its native [transpiler](/runtime/transpiler) before running it.
+Bun 无需任何配置即可支持 TypeScript 和 JSX。Bun 在运行每个文件之前,会用原生的[转译器](/runtime/transpiler)即时转译。
 
 ```bash terminal icon="terminal"
 bun run index.js
@@ -33,7 +35,7 @@ bun run index.ts
 bun run index.tsx
 ```
 
-Alternatively, you can omit the `run` keyword and use the "naked" command; it behaves identically.
+也可以省略 `run` 关键字,直接使用"裸"命令,行为完全一致。
 
 ```bash terminal icon="terminal"
 bun index.tsx
@@ -42,35 +44,35 @@ bun index.js
 
 ### `--watch`
 
-To run a file in watch mode, use the `--watch` flag.
+要以 watch 模式运行文件,使用 `--watch` 参数。
 
 ```bash terminal icon="terminal"
 bun --watch run index.tsx
 ```
 
 <Note>
-When using `bun run`, put Bun flags like `--watch` immediately after `bun`.
+使用 `bun run` 时,应把 `--watch` 等 Bun 参数紧跟在 `bun` 后面。
 
 ```bash
 bun --watch run dev # ✔️ do this
 bun run dev --watch # ❌ don't do this
 ```
 
-`bun` ignores flags at the end of the command and passes them through to the `"dev"` script itself.
+`bun` 会忽略命令末尾的参数,并把它们透传给 `"dev"` 脚本本身。
 
 </Note>
 
-## Run a `package.json` script
+## 运行 `package.json` 脚本
 
 <Note>
-Compare to `npm run <script>` or `yarn <script>`
+对应 `npm run <script>` 或 `yarn <script>`
 </Note>
 
 ```sh
 bun [bun flags] run <script> [script flags]
 ```
 
-Your `package.json` can define named `"scripts"` that correspond to shell commands.
+`package.json` 可以定义与 shell 命令对应的具名 `"scripts"`。
 
 ```json package.json icon="file-json"
 {
@@ -82,7 +84,7 @@ Your `package.json` can define named `"scripts"` that correspond to shell comman
 }
 ```
 
-Use `bun run <script>` to execute these scripts.
+使用 `bun run <script>` 执行这些脚本。
 
 ```bash terminal icon="terminal"
 bun run clean
@@ -93,17 +95,17 @@ rm -rf dist && echo 'Done.'
 Done.
 ```
 
-Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On Windows, it uses the [Bun Shell](/runtime/shell) to support bash-like syntax and many common commands.
+Bun 在子 shell 中执行脚本命令。在 Linux 和 macOS 上,它按以下顺序检查可用的 shell,并使用找到的第一个:`bash`、`sh`、`zsh`。在 Windows 上,它使用 [Bun Shell](/runtime/shell) 来支持类 bash 语法和许多常用命令。
 
-<Note>⚡️ The startup time for `npm run` on Linux is roughly 170ms; with Bun it is `6ms`.</Note>
+<Note>⚡️ Linux 上 `npm run` 的启动开销约 170ms;Bun 只要 `6ms`。</Note>
 
-You can also run scripts with the shorter command `bun <script>`. If a built-in `bun` command has the same name, the built-in command takes precedence; use the explicit `bun run <script>` to run your package script instead.
+也可以用更短的命令 `bun <script>` 运行脚本。如果与内置 `bun` 命令重名,内置命令优先;此时请用显式的 `bun run <script>` 来运行你的 package 脚本。
 
 ```bash terminal icon="terminal"
 bun run dev
 ```
 
-To see a list of available scripts, run `bun run` without any arguments.
+不带参数运行 `bun run` 可以查看可用脚本列表。
 
 ```bash terminal icon="terminal"
 bun run
@@ -119,11 +121,11 @@ package.json scripts (2 found):
     bun server.ts
 ```
 
-Bun respects lifecycle hooks. For instance, `bun run clean` runs `preclean` and `postclean`, if defined. If the `pre<script>` fails, Bun does not run the script itself.
+Bun 支持生命周期钩子。例如 `bun run clean` 会依次运行 `preclean` 和 `postclean`(如果定义了)。若 `pre<script>` 失败,Bun 不会运行脚本本身。
 
 ### `--bun`
 
-It's common for `package.json` scripts to reference locally-installed CLIs like `vite` or `next`. These CLIs are often JavaScript files marked with a [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) to indicate that they should be executed with `node`.
+`package.json` 脚本引用本地安装的 CLI(如 `vite` 或 `next`)很常见。这些 CLI 通常是带有 [shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) 的 JavaScript 文件,声明用 `node` 执行。
 
 ```js cli.js icon="/icons/javascript.svg"
 #!/usr/bin/env node
@@ -131,30 +133,30 @@ It's common for `package.json` scripts to reference locally-installed CLIs like 
 // do stuff
 ```
 
-By default, Bun respects this shebang and executes the script with `node`. The `--bun` flag overrides it: the CLI runs with Bun instead of Node.js.
+默认情况下,Bun 遵循该 shebang 并用 `node` 执行脚本。`--bun` 参数可以覆盖它:CLI 将用 Bun 而不是 Node.js 运行。
 
 ```bash terminal icon="terminal"
 bun run --bun vite
 ```
 
-### Filtering
+### 过滤
 
-In a monorepo, the `--filter` argument runs a script in many packages at once.
+在 monorepo 中,`--filter` 参数可以一次在多个包中运行脚本。
 
-`bun run --filter <pattern> <script>` executes `<script>` in every package selected by `<pattern>`. The pattern can be a package name glob, a `./path`, a `{dir}` directory or a dependency relation like `foo...`.
-For example, if you have subdirectories containing packages named `foo`, `bar` and `baz`, running
+`bun run --filter <pattern> <script>` 会在 `<pattern>` 选中的每个包中执行 `<script>`。模式可以是包名 glob、`./path`、`{dir}` 目录,或 `foo...` 这样的依赖关系表达式。
+例如,假设你有包含名为 `foo`、`bar`、`baz` 的包的子目录,运行
 
 ```bash terminal icon="terminal"
 bun run --filter 'ba*' <script>
 ```
 
-executes `<script>` in both `bar` and `baz`, but not in `foo`.
+会在 `bar` 和 `baz` 中执行 `<script>`,但不会在 `foo` 中执行。
 
-See [`--filter`](/pm/filter#running-scripts-with-filter).
+参见 [`--filter`](/pm/filter#running-scripts-with-filter)。
 
-## `bun run -` to pipe code from stdin
+## 用 `bun run -` 从 stdin 管入代码
 
-`bun run -` reads JavaScript, TypeScript, TSX, or JSX from stdin and executes it without writing to a temporary file first.
+`bun run -` 从 stdin 读取 JavaScript、TypeScript、TSX 或 JSX 并执行,不先写入临时文件。
 
 ```bash terminal icon="terminal"
 echo "console.log('Hello')" | bun run -
@@ -164,7 +166,7 @@ echo "console.log('Hello')" | bun run -
 Hello
 ```
 
-You can also use `bun run -` to redirect files into Bun. For example, to run a `.js` file as if it were a `.ts` file:
+也可以用 `bun run -` 把文件重定向给 Bun。例如,把 `.js` 文件当 `.ts` 文件运行:
 
 ```bash terminal icon="terminal"
 echo "console.log!('This is TypeScript!' as any)" > secretly-typescript.js
@@ -175,17 +177,17 @@ bun run - < secretly-typescript.js
 This is TypeScript!
 ```
 
-`bun run -` treats all input as TypeScript with JSX support.
+`bun run -` 把所有输入视为支持 JSX 的 TypeScript。
 
 ## `bun run --console-depth`
 
-Control the depth of object inspection in console output with the `--console-depth` flag.
+使用 `--console-depth` 参数控制 console 输出中对象检查的深度。
 
 ```bash terminal icon="terminal"
 bun --console-depth 5 run index.tsx
 ```
 
-`--console-depth` sets how deeply Bun displays nested objects in `console.log()` output. The default depth is `2`. Higher values show more nested properties but may produce verbose output for complex objects.
+`--console-depth` 设置 Bun 在 `console.log()` 输出中显示嵌套对象的深度。默认深度为 `2`。数值越高,显示的嵌套属性越多,但对复杂对象可能产生冗长的输出。
 
 ```ts console.ts icon="/icons/typescript.svg"
 const nested = { a: { b: { c: { d: "deep" } } } };
@@ -196,24 +198,24 @@ console.log(nested);
 
 ## `bun run --smol`
 
-In memory-constrained environments, use the `--smol` flag to reduce memory usage at a cost to performance.
+在内存受限的环境中,使用 `--smol` 参数以牺牲性能为代价降低内存占用。
 
 ```bash terminal icon="terminal"
 bun --smol run index.tsx
 ```
 
-`--smol` makes the garbage collector run more frequently, which can slow down execution. Bun adjusts the garbage collector's heap size based on the available memory (accounting for cgroups and other memory limits) with and without the `--smol` flag. The flag is therefore mostly useful when you want the heap to grow more slowly.
+`--smol` 会让垃圾回收器更频繁地运行,可能拖慢执行速度。无论是否使用 `--smol`,Bun 都会根据可用内存(考虑 cgroup 等内存限制)调整垃圾回收器的堆大小。因此该参数主要在希望堆增长得更慢时有用。
 
-## Resolution order
+## 解析顺序
 
-Bun always executes absolute paths and paths starting with `./` or `.\\` as source files. Unless you use `bun run`, a name with an allowed extension resolves to the file rather than a `package.json` script.
+Bun 总是把绝对路径和以 `./` 或 `.\\` 开头的路径当作源文件执行。除非使用 `bun run`,否则带允许扩展名的名字会被解析为文件而不是 `package.json` 脚本。
 
-When a `package.json` script and a file have the same name, `bun run` prefers the script. The full resolution order is:
+当 `package.json` 脚本与文件同名时,`bun run` 优先选择脚本。完整的解析顺序为:
 
-1. `package.json` scripts: `bun run build`
-2. Source files: `bun run src/main.js`
-3. Binaries from project packages: `bun add eslint && bun run eslint`
-4. (`bun run` only) System commands: `bun run ls`
+1. `package.json` 脚本:`bun run build`
+2. 源文件:`bun run src/main.js`
+3. 项目包中的二进制:`bun add eslint && bun run eslint`
+4. (仅 `bun run`)系统命令:`bun run ls`
 
 ---
 
