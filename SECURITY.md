@@ -1,11 +1,13 @@
-# Security Policy
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
-## Supported Versions
+# 安全策略
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
+## 受支持的版本
 
-## Reporting a Vulnerability
+| 版本   | 是否受支持         |
+| ------ | ------------------ |
+| 1.x.x  | :white_check_mark: |
 
-Report any discovered vulnerabilities to the Bun team by emailing `security@bun.com`. Your report will acknowledged within 5 days, and a team member will be assigned as the primary handler. To the greatest extent possible, the security team will endeavor to keep you informed of the progress being made towards a fix and full announcement, and may ask for additional information or guidance surrounding the reported issue.
+## 报告漏洞
+
+如发现任何漏洞,请发送电子邮件至 `security@bun.com` 向 Bun 团队报告。我们将在 5 天内确认收到你的报告,并指派一名团队成员作为主要处理人。安全团队会尽可能让你及时了解修复进展和完整公告的发布情况,并可能就所报告的问题向你询问补充信息或寻求指导。

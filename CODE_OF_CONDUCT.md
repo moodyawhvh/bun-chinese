@@ -1,12 +1,14 @@
-## Code of conduct
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
-- We are committed to providing a friendly, safe and welcoming environment for all, regardless of level of experience, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, nationality, or other similar characteristic.
-- Please avoid using overtly sexual aliases or other nicknames that might detract from a friendly, safe and welcoming environment for all.
-- Please be kind and courteous. There’s no need to be mean or rude.
-- Respect that people have differences of opinion and that every design or implementation choice carries a trade-off and numerous costs. There is seldom a right answer.
-- Please keep unstructured critique to a minimum. If you have solid ideas you want to experiment with, make a fork and see how it works.
-- We will exclude you from interaction if you insult, demean or harass anyone. That is not welcome behavior. We interpret the term “harassment” as including the definition in the [Citizen Code of Conduct](https://github.com/stumpsyn/policies/blob/master/citizen_code_of_conduct.md); if you have any lack of clarity about what might be included in that concept, please read their definition. In particular, we don’t tolerate behavior that excludes people in socially marginalized groups.
-- Private harassment is also unacceptable. No matter who you are, if you feel you have been or are being harassed or made uncomfortable by a community member, please contact one of the channel ops or an employee of Oven immediately. Whether you’re a regular contributor or a newcomer, we care about making this community a safe place for you and we’ve got your back.
-- Likewise any spamming, trolling, flaming, baiting or other attention-stealing behavior is not welcome.
+## 行为准则
 
-This code of conduct is adapted from the [Rust Code of Conduct](https://www.rust-lang.org/policies/code-of-conduct).
+- 我们致力于为所有人提供一个友好、安全、受欢迎的环境,无论其经验水平、性别认同与表达、性取向、残障状况、个人外貌、体型、种族、民族、年龄、宗教、国籍或其他类似特征如何。
+- 请避免使用带有明显性暗示的别名或其他可能破坏友好、安全、受欢迎氛围的昵称。
+- 请保持友善和礼貌。没有必要刻薄或粗鲁。
+- 尊重人与人之间的观点差异,理解每一个设计或实现选择都伴随着权衡和多种代价。很少有绝对正确的答案。
+- 请尽量减少不加组织的批评。如果你有想实验的扎实想法,请 fork 一份自己动手试试。
+- 如果你侮辱、贬低或骚扰任何人,我们将把你排除在社区互动之外。这不是受欢迎的行为。我们对"骚扰"一词的理解包含 [Citizen Code of Conduct](https://github.com/stumpsyn/policies/blob/master/citizen_code_of_conduct.md) 中的定义;如果你不清楚哪些行为属于这一范畴,请阅读他们的定义。特别地,我们绝不容忍将社会边缘群体排除在外的行为。
+- 私下骚扰同样不可接受。无论你是谁,如果你觉得自己曾经或正在被社区成员骚扰或感到不适,请立即联系任意频道管理员或 Oven 的员工。无论你是老贡献者还是新人,我们都在乎这个社区对你而言是否安全,我们会支持你。
+- 同样,任何刷屏、引战、人身攻击、故意挑衅或其他博取关注的行为都不受欢迎。
+
+本行为准则改编自 [Rust Code of Conduct](https://www.rust-lang.org/policies/code-of-conduct)。
