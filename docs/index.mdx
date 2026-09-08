@@ -1,99 +1,101 @@
 ---
-title: Welcome to Bun
-description: Bun is an all-in-one toolkit for developing modern JavaScript/TypeScript applications.
+title: 欢迎使用 Bun
+description: Bun 是开发现代 JavaScript/TypeScript 应用的一体化工具集。
 mode: center
 ---
+
+> 🌐 本文档由 [oven-sh/bun](https://github.com/oven-sh/bun) 翻译,英文原版见原项目。
 
 <CardGroup>
   <Card
     icon="cog"
-    title="Bun Runtime"
+    title="Bun 运行时"
     href="/runtime"
     cta={
       <span>
-        Get started with <code>bun run</code>
+        从 <code>bun run</code> 开始
       </span>
     }
   >
-    A fast JavaScript runtime designed as a drop-in replacement for Node.js
+    高速 JavaScript 运行时,可直接替换 Node.js
   </Card>
   <Card
     icon="box"
-    title="Bun Package Manager"
+    title="Bun 包管理器"
     href="/pm/cli/install"
     cta={
       <span>
-        Get started with <code>bun install</code>
+        从 <code>bun install</code> 开始
       </span>
     }
   >
-    Install packages up to 30x faster than npm with a global cache and workspaces
+    依托全局缓存与 workspaces,安装速度最高可达 npm 的 30 倍
   </Card>
   <Card
     icon="flask-conical"
-    title="Bun Test Runner"
+    title="Bun 测试运行器"
     href="/test"
     cta={
       <span>
-        Get started with <code>bun test</code>
+        从 <code>bun test</code> 开始
       </span>
     }
   >
-    Jest-compatible, TypeScript-first tests with snapshots, DOM, and watch mode
+    兼容 Jest、TypeScript 优先,支持快照、DOM 和 watch 模式
   </Card>
   <Card
     icon="combine"
-    title="Bun Bundler"
+    title="Bun 打包器"
     href="/bundler"
     cta={
       <span>
-        Get started with <code>bun build</code>
+        从 <code>bun build</code> 开始
       </span>
     }
   >
-    Bundle TypeScript, JSX, React & CSS for both browsers and servers
+    为浏览器和服务器打包 TypeScript、JSX、React 和 CSS
   </Card>
 </CardGroup>
 
 ---
 
-## Get Started
+## 快速开始
 
-Bun ships as a single, dependency-free binary and includes a runtime, package manager, test runner, and bundler. New to Bun?
+Bun 以单个无依赖的二进制文件发布,内含运行时、包管理器、测试运行器和打包器。初次接触 Bun?
 
 <CardGroup>
-  <Card icon="download" title="Install Bun" href="/installation">
-    Supported platforms and all install methods.
+  <Card icon="download" title="安装 Bun" href="/installation">
+    支持的平台与全部安装方式。
   </Card>
-  <Card icon="zap" title="Quickstart" href="/quickstart">
-    Hello world in minutes with Bun.serve.
+  <Card icon="zap" title="快速上手" href="/quickstart">
+    几分钟内用 Bun.serve 跑起 Hello world。
   </Card>
 </CardGroup>
 
 ---
 
-## What's Inside
+## 包含哪些内容
 
-- Runtime: Execute JavaScript/TypeScript files and package scripts with near-zero overhead.
-- Package Manager: Fast installs, workspaces, overrides, and audits with `bun install`.
-- Test Runner: Jest-compatible, TypeScript-first tests with snapshots, DOM, and watch mode.
-- Bundler: Native bundling for JS/TS/JSX with splitting, plugins, and HTML imports.
+- 运行时:以近乎零开销执行 JavaScript/TypeScript 文件和 package 脚本。
+- 包管理器:`bun install` 提供快速安装、workspaces、overrides 和审计。
+- 测试运行器:兼容 Jest、TypeScript 优先,支持快照、DOM 和 watch 模式。
+- 打包器:对 JS/TS/JSX 的原生打包,支持代码分割、插件和 HTML 导入。
 
-Explore each area using the cards above. Each section is structured with an overview, short examples, reference, and best practices for fast scanning and deep dives.
+使用上方卡片探索各领域。每个板块都按概览、简短示例、参考文档和最佳实践组织,便于快速浏览和深入研读。
 
 ---
 
-## What is Bun?
+## Bun 是什么?
 
-Bun is an all-in-one toolkit for JavaScript and TypeScript apps. It ships as a single executable called `bun`.
+Bun 是面向 JavaScript 和 TypeScript 应用的一体化工具集,以单个名为 `bun` 的可执行文件发布。
 
-At its core is the _Bun runtime_, a fast JavaScript runtime designed as **a drop-in replacement for Node.js**. It's written in Rust and powered by JavaScriptCore, reducing startup time and memory usage.
+其核心是 _Bun 运行时_,一个旨在**直接替换 Node.js** 的高速 JavaScript 运行时。它使用 Rust 编写、由 JavaScriptCore 驱动,启动时间和内存占用都更低。
 
 ```bash terminal icon="terminal"
 bun run index.tsx  # TS and JSX supported by default
 ```
 
-The `bun` command-line tool also implements a test runner, script runner, and Node.js-compatible package manager. All three are significantly faster than existing tools, and you can use them in existing Node.js projects with little to no changes.
+`bun` 命令行工具还实现了测试运行器、脚本运行器和与 Node.js 兼容的包管理器。这三者都比现有工具快得多,并且几乎无需改动就能用在现有 Node.js 项目中。
 
 ```bash terminal icon="terminal"
 bun run start                 # run the `start` script
@@ -103,31 +105,30 @@ bun test                      # run tests
 bunx cowsay 'Hello, world!'   # execute a package
 ```
 
-## What is a runtime?
+## 什么是运行时?
 
-JavaScript (or, more formally, ECMAScript) is only a _specification_ for a programming language. Anyone can write a JavaScript _engine_ that ingests a valid JavaScript program and executes it. The two most popular engines in use today are V8 (developed by Google)
-and JavaScriptCore (developed by Apple). Both are open source.
+JavaScript(更正式的称呼是 ECMAScript)只是一份编程语言的_规范_。任何人都可以编写一个 JavaScript _引擎_,接收合法的 JavaScript 程序并执行它。当今最流行的两个引擎是 V8(Google 开发)和 JavaScriptCore(Apple 开发),二者都是开源的。
 
-But most JavaScript programs don't run in a vacuum. They need a way to access the outside world to perform useful tasks. This is where _runtimes_ come in. They implement additional APIs and make them available to the JavaScript programs they execute.
+但大多数 JavaScript 程序并非在真空中运行,它们需要访问外部世界才能完成有用的任务。这正是_运行时_的用武之地:运行时实现额外的 API,并提供给它所执行的 JavaScript 程序。
 
-### Browsers
+### 浏览器
 
-Browsers ship with JavaScript runtimes that implement a set of Web-specific APIs, exposed on the global `window` object. Any JavaScript code executed by the browser can use these APIs to add interactive or dynamic behavior to the current webpage.
+浏览器自带 JavaScript 运行时,实现了一组 Web 专属 API,暴露在全局 `window` 对象上。浏览器执行的任何 JavaScript 代码都可以使用这些 API 为当前网页添加交互或动态行为。
 
 ### Node.js
 
-Node.js is a JavaScript runtime for non-browser environments, like servers. JavaScript programs executed by Node.js have access to a set of Node.js-specific [globals](https://nodejs.org/api/globals.html) like `Buffer`, `process`, and `__dirname` in addition to built-in modules for OS-level tasks like reading/writing files (`node:fs`) and networking (`node:net`, `node:http`). Node.js also implements a CommonJS-based module system and resolution algorithm that pre-dates JavaScript's native module system.
+Node.js 是面向非浏览器环境(如服务器)的 JavaScript 运行时。Node.js 执行的 JavaScript 程序除了能使用处理操作系统级任务(如读写文件 `node:fs`、网络 `node:net`、`node:http`)的内置模块外,还可以访问一组 Node.js 专属的[全局对象](https://nodejs.org/api/globals.html),如 `Buffer`、`process`、`__dirname`。Node.js 还实现了一套基于 CommonJS 的模块系统和解析算法,早于 JavaScript 原生模块系统出现。
 
-Bun is designed as a faster, leaner, more modern replacement for Node.js.
+Bun 的定位是更快、更精简、更现代的 Node.js 替代品。
 
-## Design goals
+## 设计目标
 
-Bun is designed from the ground-up with today's JavaScript ecosystem in mind.
+Bun 从零开始设计,充分照顾当今的 JavaScript 生态。
 
-- **Speed**. Bun processes start [4x faster than Node.js](https://twitter.com/jarredsumner/status/1499225725492076544).
-- **TypeScript & JSX support**. You can directly execute `.jsx`, `.ts`, and `.tsx` files; Bun's transpiler converts these to vanilla JavaScript before execution.
-- **ESM & CommonJS compatibility**. The world is moving towards ES modules (ESM), but millions of packages on npm still require CommonJS. Bun recommends ES modules, but supports CommonJS.
-- **Web-standard APIs**. Bun implements standard Web APIs like `fetch`, `WebSocket`, and `ReadableStream`. Bun is powered by the JavaScriptCore engine, which is developed by Apple for Safari, so some APIs like [`Headers`](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) directly use [Safari's implementation](https://github.com/oven-sh/bun/blob/HEAD/src/jsc/bindings/webcore/JSFetchHeaders.cpp).
-- **Node.js compatibility**. In addition to supporting Node-style module resolution, Bun aims for full compatibility with built-in Node.js globals (`process`, `Buffer`) and modules (`path`, `fs`, `http`). _This is an ongoing effort._ See [Node.js compatibility](/runtime/nodejs-compat) for the current status.
+- **速度**。Bun 进程启动速度[比 Node.js 快 4 倍](https://twitter.com/jarredsumner/status/1499225725492076544)。
+- **TypeScript 和 JSX 支持**。可以直接执行 `.jsx`、`.ts`、`.tsx` 文件;Bun 的转译器会在执行前把它们转换成原生 JavaScript。
+- **ESM 与 CommonJS 兼容**。世界正在转向 ES 模块(ESM),但 npm 上仍有数百万个包依赖 CommonJS。Bun 推荐 ES 模块,同时支持 CommonJS。
+- **Web 标准 API**。Bun 实现了 `fetch`、`WebSocket`、`ReadableStream` 等标准 Web API。Bun 由 Apple 为 Safari 开发的 JavaScriptCore 引擎驱动,因此 [`Headers`](https://developer.mozilla.org/en-US/docs/Web/API/Headers)、[`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) 等 API 直接使用 [Safari 的实现](https://github.com/oven-sh/bun/blob/HEAD/src/jsc/bindings/webcore/JSFetchHeaders.cpp)。
+- **Node.js 兼容**。除了支持 Node 风格的模块解析,Bun 还力求与 Node.js 内置全局对象(`process`、`Buffer`)和模块(`path`、`fs`、`http`)完全兼容。_这项工作仍在进行中。_ 当前进展见 [Node.js 兼容性](/runtime/nodejs-compat)。
 
-Bun is more than a runtime. The long-term goal is a cohesive, infrastructural toolkit for building apps with JavaScript/TypeScript: a package manager, transpiler, bundler, script runner, and test runner.
+Bun 不只是一个运行时。长期目标是打造一套完整的基础设施工具集,用于构建 JavaScript/TypeScript 应用:包管理器、转译器、打包器、脚本运行器和测试运行器。
