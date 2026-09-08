@@ -1,4 +1,8 @@
+# 中文注释:本文件由 [oven-sh/bun](https://github.com/oven-sh/bun) 汉化注释,原版见原项目。
+# 该文件把 Bun 的 Rust 构建固定在一个精确的 nightly 工具链上;
+# 构建脚本(rustup)会自动按此安装/更新工具链,请勿随意改动 channel。
 [toolchain]
+# 固定的 nightly 版本(升级需全仓库回归测试)
 channel = "nightly-2026-07-20"
 # rust-src is needed for -Zbuild-std (Tier 3 targets like
 # aarch64-unknown-freebsd have no prebuilt std). miri is for
@@ -11,13 +15,31 @@ channel = "nightly-2026-07-20"
 # symlinks) — the ninja `rust_build_cross` rule's `rustup target add`
 # self-heals that path. Keep this list as a fallback for direct
 # `cargo build`/`cargo check`/rust-analyzer use.
+# 中文注释:
+# - rust-src 用于 -Zbuild-std(Tier 3 目标如 aarch64-unknown-freebsd
+#   没有预编译 std);miri 用于 `bun run rust:miri`。
+# - targets 确保为“本工具链”安装 Tier 2 交叉目标的预编译 std
+#   (bootstrap.sh / Dockerfile 只在构建镜像时为*默认*工具链安装,
+#   因此若在这里 bump channel,固定 nightly 将缺少它们)。
+# - 注意:若环境变量 RUSTUP_TOOLCHAIN 已设置(CI 会设置它以在
+#   worktree 符号链接间固定工具链),rustup 会完全忽略本文件——
+#   此时由 ninja 的 `rust_build_cross` 规则执行 `rustup target add`
+#   自行补救。保留此列表作为直接使用 `cargo build`/`cargo check`/
+#   rust-analyzer 时的兜底。
 # Mirrors `allRustTargets` in scripts/build/rust.ts minus aarch64-unknown-freebsd
 # (Tier 3 — no prebuilt rust-std, cargo `-Zbuild-std` builds it from rust-src).
 # darwin/windows triples build natively on their own agents, so the host std
 # comes with the toolchain install regardless; they're listed here so a dev
 # running `bun run rust:check-all` or `cargo check --target` from any host
 # still gets prebuilt std for every Tier 1/2 triple.
+# 中文注释:本列表与 scripts/build/rust.ts 中的 `allRustTargets` 一致,
+# 但不含 aarch64-unknown-freebsd(Tier 3——无预编译 rust-std,由 cargo
+# `-Zbuild-std` 用 rust-src 从源码构建)。darwin/windows 三元组在各自
+# 的原生 agent 上构建,宿主 std 随工具链安装自带;列出它们是为了让
+# 开发者在任意宿主机上运行 `bun run rust:check-all` 或
+# `cargo check --target` 时,仍能为每个 Tier 1/2 三元组取到预编译 std。
 components = ["rust-src", "rustfmt", "clippy", "miri"]
+# 中文注释:需要预装预编译 std 的交叉编译目标列表
 targets = [
   "aarch64-unknown-linux-gnu",
   "x86_64-unknown-linux-gnu",
